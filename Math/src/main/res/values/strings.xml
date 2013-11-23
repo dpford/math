@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Math</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="title">Learn To Add</string>
+    <string name="hint">Enter your answer here</string>
+    <string name="button_text">Check</string>
+
+
+</resources>

@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.inputmethod.InputMethodManager;
@@ -25,6 +27,11 @@ public class MainActivity extends ActionBarActivity {
     TextView streakText;
     EditText answerEntry;
     Button checkButton;
+    ProgressBar proBar;
+    ImageView star1;
+    ImageView star2;
+    ImageView star3;
+    int progress;
     int streak;
     int[] anArray;
     final Random rand = new Random();
@@ -35,14 +42,13 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         anArray = new int[2];
-        // import random
-
-
+        proBar = (ProgressBar) findViewById(R.id.correctProgressBar);
+        star1 = (ImageView) findViewById(R.id.starImageView1);
+        star2 = (ImageView) findViewById(R.id.starImageView2);
+        star3 = (ImageView) findViewById(R.id.starImageView3);
 
         //nextInt is exclusive of top value, so do +1 to include it
         //replace 9 and 0 with max and min, respectively, if you want to do something else here
-        /*final int first_a = rand.nextInt((9 - 0) + 1) + 0;
-        final int first_b = rand.nextInt((9 - 0) + 1) + 0;*/
         anArray[0] = rand.nextInt((9 - 0) + 1) + 0;
         anArray[1] = rand.nextInt((9 - 0) + 1) + 0;
         equation = (TextView) findViewById(R.id.txtEquation);
@@ -54,7 +60,7 @@ public class MainActivity extends ActionBarActivity {
 
         streakText = (TextView) findViewById(R.id.streakTextView);
         streak = 0;
-        streakText.setText("Streak: " + streak);
+        progress = 0;
 
 
 
@@ -71,13 +77,6 @@ public class MainActivity extends ActionBarActivity {
         }
 
     }
-
-    /*private View.OnClickListener checkButtonListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            //refreshEquation();
-        }
-    };*/
 
 
     private void setButtonOnClickListeners(){
@@ -97,21 +96,31 @@ public class MainActivity extends ActionBarActivity {
                     equation.setText(anArray[0] + " + " + anArray[1]);
                     answerEntry.setText("");
                     streak++;
-                    streakText.setText("Streak: " + streak);
+                    progress++;
+                    if (progress == 5){
+                        star1.setImageResource(R.drawable.mario_star);
+                    }
+                    if (progress == 10) {
+                        star2.setImageResource(R.drawable.mario_star);
+                    }
+                    if (progress == 15) {
+                        star3.setImageResource(R.drawable.mario_star);
+                    }
+                    proBar.setProgress(progress % 5);
+                    if (streak > 2){
+                        streakText.setText("Streak: " + streak);
+                    }
+
 
                 }
                 else {
                     Toast.makeText(getApplicationContext(), "Try again!", Toast.LENGTH_LONG).show();
                     streak = 0;
-                    streakText.setText("Streak: " + streak);
+                    streakText.setText("");
                 }
-
-
             }
-
         });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -51,10 +51,47 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
         android:id="@+id/streakTextView"
         android:layout_gravity="right|bottom"
         android:layout_marginBottom="80dp"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="20dp"
+        android:singleLine="false" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="335dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/correctProgressBar"
+        android:layout_gravity="bottom|left"
+        android:layout_marginBottom="120dp"
+        android:max="5"
+        android:progress="0"
+        android:layout_marginLeft="8dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/starImageView1"
+        android:layout_gravity="left|top"
+        android:cropToPadding="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/starImageView2"
+        android:layout_gravity="center_horizontal|top"
+        android:cropToPadding="true"
+        android:layout_marginTop="40dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/starImageView3"
+        android:layout_gravity="right|top"
+        android:cropToPadding="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="30dp" />
 
 </FrameLayout>
